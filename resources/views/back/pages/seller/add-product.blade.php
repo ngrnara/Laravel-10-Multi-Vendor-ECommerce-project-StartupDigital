@@ -25,6 +25,17 @@
     </div>
 </div>
 
+{{-- Backup Alert jika Toastr gagal memicu pesan --}}
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form action="{{ route('seller.product.create-product') }}" method="POST" enctype="multipart/form-data" id="addProductForm">
     @csrf
     <div class="row pd-10">
@@ -37,7 +48,8 @@
                 </div>
                 <div class="form-group">
                     <label for=""><b>Product summary:</b></label>
-                    <textarea  id="summary" class="form-control summernote" cols="30" rows="10"></textarea>
+                    {{-- FIX: Ditambahkan atribut name="summary" agar dibaca oleh form data --}}
+                    <textarea id="summary" name="summary" class="form-control summernote" cols="30" rows="10"></textarea>
                     <span class="text-danger error-text summary_error"></span>
                 </div>
                 <div class="form-group">
@@ -96,7 +108,7 @@
             </div>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group pd-10">
         <button type="submit" class="btn btn-primary">Create product</button>
     </div>
 </form>
@@ -149,30 +161,32 @@
               dataType:'json',
               contentType:false,
               beforeSend:function(){
-                toastr.remove();
+                if(typeof toastr !== 'undefined') toastr.remove();
                 $(form).find('span.error-text').text('');
               },
               success:function(response){
-                  toastr.remove();
                   if( response.status == 1 ){
                     $(form)[0].reset();
                     $('textarea.summernote').summernote('code','');
                     $('select#subcategory').find('option').not(':first').remove();
                     $('img#image-preview').attr('src','');
-                    toastr.success(response.msg);
+                    if(typeof toastr !== 'undefined') toastr.success(response.msg);
+                    else alert(response.msg);
                   }else{
-                    toastr.error(response.msg);
+                    if(typeof toastr !== 'undefined') toastr.error(response.msg);
+                    else alert(response.msg);
                   }
               },
               error:function(response){
-                toastr.remove();
-                $.each( response.responseJSON.errors, function(prefix,val){
-                    $(form).find('span.'+prefix+'_error').text(val[0]);
-                } );
+                if(response.responseJSON && response.responseJSON.errors){
+                    $.each( response.responseJSON.errors, function(prefix,val){
+                        $(form).find('span.'+prefix+'_error').text(val[0]);
+                    });
+                } else {
+                    alert('Terjadi kesalahan pada server saat validasi produk.');
+                }
               }
            });
         });
     </script>
-
-   
 @endpush
