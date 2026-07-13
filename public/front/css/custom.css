@@ -20144,4 +20144,117 @@ textarea.order_note{
     color: #fff;
 }
 
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-slide img.bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============ Override padding container biar lebih ke kiri ============ */
+.category-section {
+    margin-top: -10px;
+}
+
+.category-container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+/* ============ TITLE dengan garis putus-putus ============ */
+.category-section .title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.category-section .title h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2b3445;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.category-section .title::after {
+    content: "";
+    flex: 1;
+    border-top: 1px dashed #d3d3d3;
+}
+
+/* ============ CARD KATEGORI ============ */
+.category-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.category-card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.category-img {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+.category-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-name {
+    font-weight: 600;
+    color: #2b3445;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 575px) {
+    .category-img {
+        width: 52px;
+        height: 52px;
+    }
+    .category-name {
+        font-size: 0.85rem;
+    }
+}
+/* scroll behavior smooth */
+html {
+    scroll-behavior: smooth;
+}
+
+/* biar section-nya nggak ketutup header sticky pas discroll ke situ */
+#new-arrivals,
+#kategori-ikan {
+    scroll-margin-top: 100px;
+}

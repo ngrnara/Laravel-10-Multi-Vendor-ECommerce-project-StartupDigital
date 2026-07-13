@@ -6,56 +6,101 @@
 <section class="home-section pt-2">
     <div class="container-fluid-lg">
         <div class="row g-4">
-            <div class="col-xl-8 ratio_65">
-                <div class="home-contain h-100 ">
-                    <div class="h-100">
-                        <img src="/front/images/home-banner-1.png" class="bg-img blur-up lazyload" alt>
-                    </div>
-                    <div class="home-detail p-center-left w-75">
-                        <div>
-                            <h1 class="text-uppercase">Beli Ikan Segar & <span class="daily">Bibit Unggul</span></h1>
-                            <p class="w-75 d-none d-sm-block">SIPARI (Sistem Informasi Pasar Iwak) menghubungkan Anda langsung dengan pembudidaya ikan tawar terbaik di Kota Demak. Dapatkan produk segar, pakan berkualitas, dan bibit unggul langsung dari sumbernya.</p>
-                            <button onclick="location.href = 'javascript:void(0)';"
-                                class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Belanja Sekarang <i class="fa fa-arrow-right icon"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+            {{-- ================= HERO UTAMA ================= --}}
+            <div class="col-xl-8 ratio_65">
+    <div class="home-contain h-100">
+
+       {{-- Slider 3 gambar - MINIMAL, cuma buat geser otomatis --}}
+<div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+        <img src="/images/Home/bibit_ikan_gurame.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
+    </div>
+    <div class="hero-slide">
+        <img src="/images/Home/bibit_ikan_nila.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
+    </div>
+    <div class="hero-slide">
+        <img src="/images/Home/ikan_segar.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
+    </div>
+</div>
+
+<script>
+    (function () {
+        const slides = document.querySelectorAll('#heroSlider .hero-slide');
+        let current = 0;
+
+        setInterval(function () {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 3000);
+    })();
+</script>
+
+        {{-- ================= TEKS OVERLAY (tetap di atas slider) ================= --}}
+        <div class="home-detail p-center-left w-75">
+            <div>
+                <h1 class="text-uppercase">Beli Ikan Segar & <span class="daily">Bibit Unggul</span></h1>
+                <p class="w-75 d-none d-sm-block">
+                    SIPARI (Sistem Informasi Pasar Iwak) menghubungkan Anda langsung dengan petani ikan air tawar, tanpa perantara tengkulak. Jual beli ikan, bibit, dan pakan jadi lebih mudah dan harga lebih menguntungkan kedua belah pihak.
+                </p>
+                <button onclick="location.href = '{{ route('lapak-ikan') }}';"
+                    class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Belanja Sekarang <i class="fa fa-arrow-right icon"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            {{-- ================= 2 BANNER KANAN ================= --}}
             <div class="col-xl-4 ratio_65">
                 <div class="row g-4">
-                    <div class="col-xl-12 col-md-6">
-                        <div class="home-contain">
-                            <img src="/front/images/home-banner-2.png" class="bg-img blur-up lazyload" alt>
-                            <div class="home-detail p-center-left home-p-sm w-75">
-                                <div>
-                                    <h2 class="mt-0 banner-label-color">Pakan
-                                        <span class="discount text-title">&</span>
-                                    </h2>
-                                    <h3 class="theme-color">Alat Budidaya</h3>
-                                    <p class="w-75">Sedia pelet berkualitas tinggi, kolam terpal, aerator, dan vitamin ikan.</p>
-                                    <a href="javascript:void(0)" class="shop-button">Lihat Produk <i
-                                            class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-xl-12 col-md-6">
-                        <div class="home-contain">
-                            <img src="/front/images/home-banner-3.png" class="bg-img blur-up lazyload" alt>
-                            <div class="home-detail p-center-left home-p-sm w-75">
-                                <div>
-                                    <h3 class="mt-0 theme-color fw-bold">Ikan Konsumsi
-                                        & Olahan</h3>
-                                    <h4 class="banner-label-color">Segar & Gurih</h4>
-                                    <p class="organic">Lele segar, nila, gurame, patin, abon ikan premium, dan kripik kulit.</p>
-                                    <a href="javascript:void(0)" class="shop-button">Lihat Produk <i
-                                            class="fa fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {{-- Banner Bibit & Pakan Ikan --}}
+<div class="col-xl-12 col-md-6">
+
+    <div class="home-contain">
+
+        <img src="/images/Home/bibit_ikan_nila.jpg" class="bg-img blur-up lazyload" alt="Bibit dan pakan ikan">
+
+        <div class="home-detail p-center-left home-p-sm w-75">
+
+            <div>
+
+                <h2 class="mt-0 banner-label-color">Bibit
+
+                    <span class="discount text-title">&</span>
+
+                </h2>
+
+                <h3 class="theme-color">Pakan Ikan</h3>
+
+                <p class="w-75">Bibit unggul dan pakan berkualitas langsung dari petani ikan air tawar terpercaya.</p>
+
+                <a href="#new-arrivals" class="shop-button">Lihat Produk <i class="fa fa-arrow-right"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+                    {{-- Banner Katalog & Hasil Panen --}}
+<div class="col-xl-12 col-md-6">
+    <div class="home-contain">
+        <img src="/images/Home/ikan_segar.jpg" class="bg-img blur-up lazyload" alt="Katalog dan hasil panen ikan">
+        <div class="home-detail p-center-left home-p-sm w-75">
+            <div>
+                <h3 class="mt-0 theme-color fw-bold">Katalog & Hasil Panen</h3>
+                <h4 class="banner-label-color">Langsung dari Petani</h4>
+                <p class="organic">Pantau harga jual dan hasil panen ikan air tawar terbaru, langsung dari petani ke pembeli.</p>
+                <a href="#kategori-ikan" class="shop-button">Lihat Produk <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>
@@ -72,12 +117,12 @@
                     <div class="category-menu">
                         <h3>Category</h3>
                         @if ( count(get_categories()) > 0 )
-                            
-                       
+
+
                         <ul>
                             @foreach (get_categories() as $category)
-                                
-                           
+
+
                             <li>
                                 <div class="category-list">
                                     <img src="/images/categories/{{ $category->category_image }}" class="blur-up lazyload" alt>
@@ -128,7 +173,7 @@
                 </div>
             </div>
 
-            <div class="col-xxl-9 col-xl-8">
+            <div class="col-xxl-9 col-xl-8" id="new-arrivals">
                 <div class="title title-flex">
                     <div>
                         <h2>New Arrivals</h2>
@@ -207,34 +252,56 @@
                     </div>
                 </div>
 
-                <div class="title">
-                    <h2>Shop by Categories</h2>
-                    <p>Condimentum magna sociis lacinia quisque porta
-                        eros nulla suspendisse sollicitudin eu,
-                        aliquet vehicula accumsan justo rhoncus erat
-                        venenatis varius</p>
+                {{-- ================= KATEGORI IKAN (otomatis dari folder public/images/products) ================= --}}
+@php
+    $productFolder = public_path('images/products');
+    $categoryImages = [];
+
+    if (is_dir($productFolder)) {
+        $allFiles = scandir($productFolder);
+        $allowedExt = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+        foreach ($allFiles as $file) {
+            $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            if (in_array($ext, $allowedExt)) {
+                $categoryImages[] = $file;
+            }
+        }
+
+        sort($categoryImages); // urut abjad
+    }
+@endphp
+
+<section class="category-section pt-1 pb-4" id="kategori-ikan">
+    <div class="container-fluid-lg category-container">
+
+        <div class="title">
+            <h2>Kategori Ikan</h2>
+        </div>
+
+        <div class="row g-3 mt-1">
+            @forelse ($categoryImages as $image)
+                @php
+                    $filename = pathinfo($image, PATHINFO_FILENAME); // contoh: ikan_bawal
+                    $categoryName = ucwords(str_replace(['_', '-'], ' ', $filename)); // contoh: Ikan Bawal
+                @endphp
+
+                <div class="col-xl-3 col-lg-4 col-md-6 col-6">
+                    <a href="#" class="category-card">
+                        <div class="category-img">
+                            <img src="{{ asset('images/products/' . $image) }}" alt="{{ $categoryName }}">
+                        </div>
+                        <span class="category-name">{{ $categoryName }}</span>
+                    </a>
                 </div>
-
-                @if ( count(get_categories()) > 0 )
-                    
-               
-                <div class="category-slider-2 product-wrapper no-arrow">
-                    @foreach (get_categories() as $category)
-                        
-                    
-                    <div>
-                        <a href="javascript:void(0)" class="category-box">
-                            <div>
-                                <img src="/images/categories/{{ $category->category_image }}" class="blur-up lazyload" alt>
-                                <h5>{{ $category->category_name }}</h5>
-                            </div>
-                        </a>
-                    </div>
-
-                    @endforeach
+            @empty
+                <div class="col-12">
+                    <p class="text-muted">Belum ada gambar di folder public/images/products.</p>
                 </div>
-
-                @endif
+            @endforelse
+        </div>
+    </div>
+</section>
 
                 <div class="title d-block">
                     <h2>Our Best Seller</h2>
