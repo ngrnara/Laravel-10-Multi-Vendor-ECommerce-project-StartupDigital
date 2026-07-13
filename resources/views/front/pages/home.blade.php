@@ -234,7 +234,7 @@
                                                     </div>
 
                                                     <div class="add-to-cart-box mt-2">
-                                                        <a href="javascript:void(0)"
+                                                        <a href="{{ route('client.checkout.index', $product->id) }}"
                                                             class="btn btn-md bg-dark cart-button text-white w-100 btn-bg-color">
                                                             <i class="fa fa-shopping-cart me-1"></i> Beli
                                                         </a>

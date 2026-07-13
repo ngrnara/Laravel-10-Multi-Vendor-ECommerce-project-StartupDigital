@@ -10,4 +10,5 @@ class constGuards
 class constDefaults
 {
     const tokenExpiredMinutes = 15;
+    const ADMIN_FEE = 3000;
 }
