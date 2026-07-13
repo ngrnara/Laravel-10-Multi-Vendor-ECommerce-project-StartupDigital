@@ -790,7 +790,7 @@
                     </div>
                 </div>
 
-                <div class="section-t-space">
+                <!-- <div class="section-t-space">
                     <div class="banner-contain hover-effect">
                         <img src="/front/images/b.png" class="bg-img blur-up lazyload" alt>
                         <div class="banner-details p-center banner-b-space w-100 text-center">
@@ -806,7 +806,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="title section-t-space">
                     <h2>Latest on Blog</h2>
