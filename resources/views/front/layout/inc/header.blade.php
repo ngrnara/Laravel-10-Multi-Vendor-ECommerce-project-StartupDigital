@@ -1,4 +1,4 @@
-<header class="shadow-sm bg-white">
+<header class="shadow-lg bg-white">
     <!-- Top thin bar -->
     <div class="container-fluid-lg py-3 border-bottom">
         <div class="d-flex gap-3">
@@ -14,7 +14,7 @@
             <!-- Logo -->
             <div class="col-lg-2 col-12 d-flex align-items-center justify-content-lg-start justify-content-center">
                 <a href="{{ route('home-page') }}" class="d-inline-flex align-items-center text-decoration-none">
-                    <span class="fw-bold fs-4" style="color:#1a1a1a;">LAPAK</span>
+                    <span class="fw-bold fs-4" style="color:var(--theme-color);">LAPAK</span>
                     <span class="fw-bold fs-4 text-white px-2 ms-1 rounded" style="background-color:var(--theme-color);">IKAN</span>
                 </a>
             </div>

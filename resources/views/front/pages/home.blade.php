@@ -6,23 +6,21 @@
 <section class="home-section pt-2">
     <div class="container-fluid-lg">
         <div class="row g-4">
-
-            {{-- ================= HERO UTAMA ================= --}}
+        {{-- ================= HERO UTAMA ================= --}}
             <div class="col-xl-8 ratio_65">
-    <div class="home-contain h-100">
-
-       {{-- Slider 3 gambar - MINIMAL, cuma buat geser otomatis --}}
-<div class="hero-slider" id="heroSlider">
-    <div class="hero-slide active">
-        <img src="/images/Home/bibit_ikan_gurame.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
-    </div>
-    <div class="hero-slide">
-        <img src="/images/Home/bibit_ikan_nila.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
-    </div>
-    <div class="hero-slide">
-        <img src="/images/Home/ikan_segar.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
-    </div>
-</div>
+                <div class="home-contain h-100">
+                    {{-- Slider 3 gambar - MINIMAL, cuma buat geser otomatis --}}
+                    <div class="hero-slider" id="heroSlider">
+                        <div class="hero-slide active">
+                            <img src="/images/Home/bibit_ikan_gurame.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="/images/Home/bibit_ikan_nila.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="/images/Home/ikan_segar.jpg" class="bg-img blur-up lazyload" alt="Ikan segar dan bibit unggul SIPARI">
+                        </div>
+                    </div>
 
 <script>
     (function () {
@@ -38,10 +36,10 @@
 </script>
 
         {{-- ================= TEKS OVERLAY (tetap di atas slider) ================= --}}
-        <div class="home-detail p-center-left w-75">
-            <div>
-                <h1 class="text-uppercase">Beli Ikan Segar & <span class="daily">Bibit Unggul</span></h1>
-                <p class="w-75 d-none d-sm-block">
+        <div class="home-detail p-center-left w-75 ">
+            <div style="background-color: rgba(0, 0, 0, 0.2);">
+                <h1 class="text-uppercase text-light">Beli Ikan Segar & <span class="daily">Bibit Unggul</span></h1>
+                <p class="w-75 d-none d-sm-block text-light">
                     SIPARI (Sistem Informasi Pasar Iwak) menghubungkan Anda langsung dengan petani ikan air tawar, tanpa perantara tengkulak. Jual beli ikan, bibit, dan pakan jadi lebih mudah dan harga lebih menguntungkan kedua belah pihak.
                 </p>
                 <button onclick="location.href = '{{ route('lapak-ikan') }}';"

@@ -1,18 +1,10 @@
 <!-- Import Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <footer class="sipari-footer">
-  <!-- Garis Gelombang Bergaris (Menghadap Ke Atas Menempel Konten Putih) -->
-  <svg class="wave-line-divider" viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0,30 Q300,0 600,15 T1200,0" fill="none" stroke="#333333" stroke-width="4"></path>
-    <path d="M0,20 Q300,5 600,22 T1200,5" fill="none" stroke="#e0e0e0" opacity="0.4" stroke-width="2"></path>
-  </svg>
-
   <div class="wrap">
     <div class="footer-grid">
-
       <!-- Kolom 1: Profil & Peta -->
       <div class="footer-col">
         <p class="brand-word"><span class="lapak">LAPAK</span><span class="word-i">IKAN</span></p>
@@ -72,7 +64,6 @@
           </a>
         </div>
       </div>
-
     </div>
 
     <!-- Sub Footer Kaki Bawah -->
@@ -103,21 +94,22 @@
 
 <style>
   .sipari-footer {
-    --bg-gray-main:     #333333;
-    --bg-gray-dock:     #2b2b2b;
-    --brand-green:      #28A745;
-    --brand-green-hover:#218838;
-    --brand-green-alpha:rgba(40, 167, 69, 0.15); /* Token hijau transparan baru */
+    --bg-gray-main:     var(--theme-color);
+    --bg-gray-dock:     var(--theme-hover-color);
+    --brand-green:      #FFFFFF;
+    --brand-green-hover:#ffffff;
+    --brand-green-alpha:rgba(255, 255, 255, 0.55);
     --text-light:       #FFFFFF;
-    --text-muted:       #aaaaaa;
-    --hairline:         rgba(255, 255, 255, 0.1);
+    --text-dark:        #1a1a1a;
+    --text-muted:       rgba(255, 255, 255, 0.95);
+    --hairline:         rgba(255, 255, 255, 0.25);
 
     position: relative;
     background: var(--bg-gray-main) !important;
     color: var(--text-light) !important;
     padding-top: 60px !important;
     overflow: hidden !important;
-    font-family: 'Work Sans', sans-serif !important;
+    font-family: 'Poppins', 'Arimo', sans-serif !important;
     box-sizing: border-box;
   }
 
@@ -136,10 +128,10 @@
     transform: translateY(-99%);
   }
 
-  .sipari-footer .wrap { 
-    max-width: 1180px; 
-    margin: 0 auto; 
-    padding: 0 32px 0; 
+  .sipari-footer .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 0;
   }
 
   .sipari-footer .footer-grid {
@@ -151,12 +143,12 @@
     align-items: start;
   }
 
-  @media (max-width: 980px) { 
-    .sipari-footer .footer-grid { grid-template-columns: 1fr 1fr !important; row-gap: 40px; } 
+  @media (max-width: 980px) {
+    .sipari-footer .footer-grid { grid-template-columns: 1fr 1fr !important; row-gap: 40px; }
   }
-  @media (max-width: 560px) { 
-    .sipari-footer .footer-grid { grid-template-columns: 1fr !important; } 
-    .sipari-footer { padding-top: 56px !important; } 
+  @media (max-width: 560px) {
+    .sipari-footer .footer-grid { grid-template-columns: 1fr !important; }
+    .sipari-footer { padding-top: 56px !important; }
   }
 
   .sipari-footer .footer-col {
@@ -164,137 +156,142 @@
   }
 
   .sipari-footer .brand-word {
-    font-family: 'Fraunces', serif !important; 
-    font-weight: 600 !important; 
+    font-family: 'Poppins', 'Arimo', sans-serif !important;
+    font-weight: 700 !important;
     font-size: 28px !important;
-    margin: 0 0 4px 0 !important; 
-    display: flex !important; 
-    align-items: baseline !important; 
+    margin: 0 0 4px 0 !important;
+    display: flex !important;
+    align-items: baseline !important;
     gap: 2px;
   }
-  .sipari-footer .brand-word .lapak { color: var(--text-light); }
-  .sipari-footer .brand-word .word-i { color: var(--brand-green); }
-  
+  .sipari-footer .brand-word .lapak {
+    color: var(--bg-gray-main) !important;
+    background: var(--text-light) !important;
+    padding: 3px !important;
+    margin-right: 4px !important;
+}
+  .sipari-footer .brand-word .word-i {
+    color: var(--text-light) !important;
+  }
+
   .sipari-footer .brand-tagline {
-    font-size: 12.5px !important; 
-    text-transform: uppercase !important; 
+    font-size: 12.5px !important;
+    text-transform: uppercase !important;
     letter-spacing: .13em !important;
-    color: var(--brand-green) !important; 
-    margin: 0 0 16px 0 !important; 
+    color: var(--text-light) !important;
+    margin: 0 0 16px 0 !important;
     font-weight: 600 !important;
   }
-  .sipari-footer .brand-desc { 
-    font-size: 14px !important; 
-    line-height: 1.65 !important; 
-    color: var(--text-muted) !important; 
-    margin: 0 0 18px 0 !important; 
+  .sipari-footer .brand-desc {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: var(--text-muted) !important;
+    margin: 0 0 18px 0 !important;
   }
 
   .sipari-footer .col-title {
-    font-family: 'Fraunces', serif !important; 
-    font-style: italic !important; 
-    font-weight: 500 !important; 
+    font-family: 'Poppins', 'Arimo', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
     font-size: 15px !important;
-    color: var(--brand-green) !important; 
+    color: var(--text-light) !important;
     margin: 0 0 16px 0 !important;
     letter-spacing: 0.03em !important;
   }
-  
-  .sipari-footer ul.vertical-menu { 
-    list-style: none !important; 
-    margin: 0 !important; 
-    padding: 0 !important; 
+
+  .sipari-footer ul.vertical-menu {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: block !important;
   }
-  .sipari-footer ul.vertical-menu li { 
-    display: block !important; 
+  .sipari-footer ul.vertical-menu li {
+    display: block !important;
     margin: 0 0 11px 0 !important;
     padding: 0 !important;
     width: 100% !important;
   }
-  .sipari-footer ul.vertical-menu li a { 
+  .sipari-footer ul.vertical-menu li a {
     display: inline-flex !important;
     align-items: center !important;
-    color: var(--text-muted) !important; 
-    text-decoration: none !important; 
-    font-size: 14px !important; 
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
     transition: color .18s ease !important;
   }
-  .sipari-footer ul.vertical-menu li a:hover { 
-    color: var(--text-light) !important; 
+  .sipari-footer ul.vertical-menu li a:hover {
+    color: var(--text-light) !important;
   }
   .sipari-footer ul.vertical-menu li a::before {
     content: ">" !important;
     margin-right: 8px !important;
-    color: var(--brand-green) !important;
+    color: var(--text-light) !important;
     font-family: monospace !important;
     font-weight: bold !important;
   }
 
   .sipari-footer .map-frame {
-    border-radius: 10px !important; 
-    overflow: hidden !important; 
+    border-radius: 10px !important;
+    overflow: hidden !important;
     border: 1px solid var(--hairline) !important;
-    margin-bottom: 14px !important; 
+    margin-bottom: 14px !important;
     filter: grayscale(.1) contrast(1.02);
   }
   .sipari-footer .map-caption { font-size: 12.5px !important; color: var(--text-muted) !important; line-height: 1.5 !important; margin: 0 0 20px 0 !important; }
 
   .sipari-footer .social-label { font-size: 11.5px !important; text-transform: uppercase !important; letter-spacing: .1em !important; color: var(--text-muted) !important; margin: 0 0 10px 0 !important; }
   .sipari-footer .social-row { display: flex !important; gap: 10px !important; flex-wrap: wrap !important; }
-  
-  /* Lingkaran Sosmed dengan Latar Hijau Redup & Border Transparan Halus */
+
   .sipari-footer .social-row a {
-    width: 36px !important; 
-    height: 36px !important; 
-    border-radius: 50% !important; 
-    background: var(--brand-green-alpha) !important; /* Hijau lembut transparan */
-    border: 1px solid rgba(40, 167, 69, 0.3) !important; /* Border hijau tipis */
-    display: flex !important; 
-    align-items: center !important; 
-    justify-content: center !important; 
-    color: var(--brand-green) !important; /* Warna icon default menjadi hijau aksen */
-    text-decoration: none !important; 
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text-light) !important;
+    text-decoration: none !important;
     transition: background .18s ease, border-color .18s ease, transform .18s ease, color .18s ease !important;
     position: relative !important;
   }
-  /* Efek Hover: Menjadi Hijau Terang Penuh dan Icon Menjadi Putih Bersih */
-  .sipari-footer .social-row a:hover { 
-    background: var(--brand-green) !important; 
-    border-color: var(--brand-green) !important; 
-    color: var(--text-light) !important;
-    transform: translateY(-2px) !important; 
+  .sipari-footer .social-row a:hover {
+    background: var(--text-light) !important;
+    border-color: var(--text-light) !important;
+    color: var(--bg-gray-main) !important;
+    transform: translateY(-2px) !important;
   }
   .sipari-footer .social-row svg { width: 15px !important; height: 15px !important; display: block !important; }
-  
+
   .sipari-footer .social-row .tip {
-    position: absolute !important; 
-    bottom: calc(100% + 8px) !important; 
-    left: 50% !important; 
+    position: absolute !important;
+    bottom: calc(100% + 8px) !important;
+    left: 50% !important;
     transform: translateX(-50%) translateY(4px) !important;
-    background: var(--text-light) !important; 
-    color: var(--bg-gray-main) !important; 
-    font-size: 11px !important; 
+    background: var(--text-light) !important;
+    color: var(--bg-gray-main) !important;
+    font-size: 11px !important;
     font-weight: 600 !important;
-    padding: 4px 8px !important; 
-    border-radius: 6px !important; 
-    white-space: nowrap !important; 
-    opacity: 0 !important; 
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
     pointer-events: none !important;
     transition: opacity .15s ease, transform .15s ease !important;
   }
   .sipari-footer .social-row a:hover .tip { opacity: 1 !important; transform: translateX(-50%) translateY(0) !important; }
 
   .sipari-footer .sub-footer {
-    max-width: 1180px; 
-    margin: 0 auto; 
+    max-width: 1180px;
+    margin: 0 auto;
     padding: 26px 32px 0 !important;
-    display: flex !important; 
-    align-items: center !important; 
-    justify-content: space-between !important; 
-    gap: 16px !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
     flex-wrap: wrap !important;
-    font-size: 12.5px !important; 
+    font-size: 12.5px !important;
     color: var(--text-muted) !important;
   }
   .sipari-footer .sub-footer a { color: var(--text-muted) !important; text-decoration: none !important; }
@@ -303,60 +300,60 @@
 
   .sipari-footer .logo-dock { display: flex !important; justify-content: center !important; padding: 28px 32px 30px !important; }
   .sipari-footer .logo-hover { position: relative !important; display: flex !important; align-items: center !important; justify-content: center !important; }
-  
+
   .sipari-footer .logo-badge {
-    width: 52px !important; 
-    height: 52px !important; 
+    width: 52px !important;
+    height: 52px !important;
     border-radius: 50% !important;
-    background: var(--bg-gray-dock) !important; 
+    background: var(--bg-gray-dock) !important;
     border: 1px solid var(--hairline) !important;
-    display: flex !important; 
-    align-items: center !important; 
-    justify-content: center !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     cursor: pointer !important;
     transition: transform .2s ease, background .2s ease !important;
   }
-  .sipari-footer .logo-badge svg { width: 26px !important; height: 26px !important; color: var(--brand-green) !important; }
-  
+  .sipari-footer .logo-badge svg { width: 26px !important; height: 26px !important; color: var(--text-light) !important; }
+
   .sipari-footer .logo-hover:hover .logo-badge,
   .sipari-footer .logo-hover:focus-within .logo-badge {
-    transform: scale(1.06) !important; 
-    background: var(--brand-green) !important;
+    transform: scale(1.06) !important;
+    background: var(--text-light) !important;
   }
   .sipari-footer .logo-hover:hover .logo-badge svg,
   .sipari-footer .logo-hover:focus-within .logo-badge svg { color: var(--bg-gray-main) !important; }
 
   .sipari-footer .logo-detail {
-    position: absolute !important; 
-    bottom: calc(100% + 14px) !important; 
-    left: 50% !important; 
+    position: absolute !important;
+    bottom: calc(100% + 14px) !important;
+    left: 50% !important;
     transform: translate(-50%, 8px) !important;
-    width: 250px !important; 
-    background: var(--text-light) !important; 
+    width: 250px !important;
+    background: var(--text-light) !important;
     color: var(--bg-gray-main) !important;
-    border-radius: 12px !important; 
+    border-radius: 12px !important;
     padding: 16px 18px !important;
-    box-shadow: 0 14px 34px rgba(0,0,0,0.35) !important; 
-    opacity: 0 !important; 
+    box-shadow: 0 14px 34px rgba(0,0,0,0.35) !important;
+    opacity: 0 !important;
     pointer-events: none !important;
-    transition: opacity .2s ease, transform .2s ease !important; 
+    transition: opacity .2s ease, transform .2s ease !important;
     text-align: left !important;
     z-index: 10 !important;
   }
   .sipari-footer .logo-detail::after {
-    content: "" !important; 
-    position: absolute !important; 
-    top: 100% !important; 
-    left: 50% !important; 
+    content: "" !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
     transform: translateX(-50%) !important;
-    border: 7px solid transparent !important; 
+    border: 7px solid transparent !important;
     border-top-color: var(--text-light) !important;
   }
   .sipari-footer .logo-hover:hover .logo-detail,
   .sipari-footer .logo-hover:focus-within .logo-detail { opacity: 1 !important; transform: translate(-50%, 0) !important; pointer-events: auto !important; }
-  
-  .sipari-footer .logo-detail .ld-title { font-family: 'Fraunces', serif !important; font-weight: 600 !important; font-size: 16px !important; margin: 0 0 4px 0 !important; }
-  .sipari-footer .logo-detail .ld-title span { color: var(--brand-green) !important; }
+
+  .sipari-footer .logo-detail .ld-title { font-family: 'Poppins', sans-serif !important; font-weight: 700 !important; font-size: 16px !important; margin: 0 0 4px 0 !important; }
+  .sipari-footer .logo-detail .ld-title span { color: var(--bg-gray-main) !important; }
   .sipari-footer .logo-detail p { margin: 0 0 8px 0 !important; font-size: 12.5px !important; line-height: 1.55 !important; color: #444444 !important; }
   .sipari-footer .logo-detail .ld-meta { font-size: 11px !important; color: #777777 !important; line-height: 1.5 !important; border-top: 1px dashed #dddddd !important; padding-top: 8px !important; }
 </style>
