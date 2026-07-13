@@ -40,7 +40,7 @@ class SellerController extends Controller
         return view('back.pages.seller.home',$data);
     } //End Method
 
-    public function createSeller(Request $request){
+   public function createSeller(Request $request){
         //Validate Seller Registration Form
         $request->validate([
             'name'=>'required',
@@ -53,6 +53,9 @@ class SellerController extends Controller
         $seller->name = $request->name;
         $seller->email = $request->email;
         $seller->password = Hash::make($request->password);
+        
+        // bypass verifikasi email karena di localhost (isi field sesuai struktur DB kelompokmu, biasanya verified/status)
+        // jika nanti tidak bisa login karena belum verifikasi, kita bisa paksa datanya true di sini.
         $saved = $seller->save();
 
         if( $saved ){
@@ -83,9 +86,10 @@ class SellerController extends Controller
            );
 
            if( sendEmail($mailConfig) ){
-              return redirect()->route('seller.register-success');
+              // DIUBAH DI SINI: Langsung pindah ke halaman login dengan pesan sukses
+              return redirect()->route('seller.login')->with('success','Registrasi berhasil! Silakan langsung login.');
            }else{
-             return redirect()->route('seller.register')->with('fail','Something went wrong while sending verification link.');
+              return redirect()->route('seller.register')->with('fail','Something went wrong while sending verification link.');
            }
         }else{
             return redirect()->route('seller.register')->with('fail','Something went wrong.');
@@ -146,13 +150,8 @@ class SellerController extends Controller
         );
 
         if( Auth::guard('seller')->attempt($creds) ){
-            // return redirect()->route('seller.home');
-            if( !auth('seller')->user()->verified ){
-                auth('seller')->logout();
-                return redirect()->route('seller.login')->with('fail','Your account is not verified. Check in your email and click on the link we had sent in order to verify your email for seller account.');
-            }else{
-                return redirect()->route('seller.home');
-            }
+    // Bypassed: Pengecekan verifikasi email dimatikan agar langsung masuk ke dashboard
+            return redirect()->route('seller.home');
         }else{
             return redirect()->route('seller.login')->withInput()->with('fail','Incorrect password.');
         }
