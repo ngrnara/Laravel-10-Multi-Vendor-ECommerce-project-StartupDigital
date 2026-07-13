@@ -38,4 +38,12 @@ class Product extends Model
     public function images(){
         return $this->hasMany(ProductImage::class,'product_id','id');
     }
+
+    public function category_relation(){
+        return $this->belongsTo(Category::class,'category','id');
+    }
+
+    public function subcategory_relation(){
+        return $this->belongsTo(SubCategory::class,'subcategory','id');
+    }
 }

@@ -4,12 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
-    --theme-color: #3051EB;
-    --theme-hover-color: #f22103;
+    --theme-color: #0f9d58;
+    --theme-hover-color: #0f9d58;
     --theme-label-color:#FF7272;
 
-    --theme-bg-01-color:#ffe000;
-    --theme-bg-01-hover-color:#ffd000ec;
+    --theme-bg-01-color:#0f9d58;
+    --theme-bg-01-hover-color:#0c7a45;
 
     --theme-bg-02-color:#eeefef;
     --theme-bg-02-hover-color:#e7e4e4;
@@ -37,6 +37,18 @@ body ::selection {
     background-color: var(--theme-color);
 }
 
+    .btn-masuk:hover {
+        background-color: var(--theme-hover-color);
+        color: #fff !important;
+    }
+    .btn-daftar:hover{
+        background-color: #fff !important;
+        color: var(--theme-hover-color) !important;
+        border: 1px solid var(--theme-hover-color) !important;
+    }
+    .btn-daftar{
+        border: 1px solid var(--theme-color) !important;
+    }
 @-webkit-keyframes scaleUpDown {
 
     0%,
@@ -4899,7 +4911,7 @@ footer .main-footer .footer-theme .footer-theme-contain ul.address li .feather {
     width: 18px;
     height: 18px;
     stroke: #4a5568;
-    
+
 }
 
 footer .main-footer .footer-theme .footer-theme-contain ul.address li p {
@@ -5028,7 +5040,7 @@ footer .main-footer .footer-contain ul.address li {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: start;
-    -ms-flex-align: start;  
+    -ms-flex-align: start;
 }
 
 footer .main-footer .footer-contain ul.address li .feather {
@@ -5064,7 +5076,7 @@ footer .main-footer .footer-contain ul li a::before {
     background-color: var(--theme-color);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    
+
 }
 
 footer .main-footer .footer-contain ul li a::after {
@@ -5082,7 +5094,7 @@ footer .main-footer .footer-contain ul li a::after {
     transition: all 0.3s ease-in-out;
     background: var(--theme-hover-color);
     border-radius: 33%;
-    
+
 }
 
 footer .main-footer .footer-contain ul li a:hover {
@@ -5435,7 +5447,7 @@ header .onhover-category-list:hover .onhover-category-box {
     }
     header .onhover-category-list .list {
         margin-bottom: 21px;
-    }   
+    }
 }
 
 header .onhover-category-list .onhover-category-box {
@@ -5457,13 +5469,13 @@ header .onhover-category-list .onhover-category-box {
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     display: grid;
-    grid-template-columns: auto auto; 
+    grid-template-columns: auto auto;
     grid-gap: .8rem;
     grid-auto-flow: dense;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: row;
-    grid-auto-rows: auto;    
-    grid-template-rows: auto 1fr;   
+    grid-auto-rows: auto;
+    grid-template-rows: auto 1fr;
 }
 
 @media (max-width: 767px) {
@@ -5557,7 +5569,7 @@ header .onhover-category-list .onhover-category-box ul li::after {
 }
 
 header .onhover-category-list .onhover-category-box ul li a {
-    margin-left: 13px; 
+    margin-left: 13px;
 }
 
 header .onhover-category-list .onhover-category-box ul li a:hover{
@@ -9189,7 +9201,7 @@ header .offcanvas-backdrop {
     z-index: -1;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    
+
 }
 
 .category-menu ul li .category-list i {
@@ -19032,7 +19044,7 @@ header .offcanvas-backdrop {
 .btn-buy-now{
     background: var(--theme-label-color);
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
 }
 .btn-buy-now:hover{
     background: #ff6363;
