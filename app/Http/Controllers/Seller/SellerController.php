@@ -16,6 +16,7 @@ use constDefaults;
 use Illuminate\Support\Facades\File;
 use Mberecall\Kropify\Kropify;
 use App\Models\Shop;
+use App\Models\Order;
 
 class SellerController extends Controller
 {
@@ -400,4 +401,18 @@ class SellerController extends Controller
             return redirect()->route('seller.shop-settings')->with('fail','Error on updating your shop info.');
         }
     }
+
+    // Tambahkan method ini di dalam class SellerController
+    public function orders()
+{
+    // Mengambil data dari DB
+    $orders = Order::orderBy('created_at', 'desc')->get();
+
+    // Pastikan string ini mencerminkan struktur folder: back -> pages -> seller -> orders
+    return view('back.pages.seller.orders', [
+        'pageTitle' => 'Pesanan Masuk',
+        'orders' => $orders
+    ]);
+}
+
 }

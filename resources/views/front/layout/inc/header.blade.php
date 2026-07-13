@@ -29,7 +29,7 @@
                         <a href="javascript:void(0)" class="text-decoration-none text-dark fw-semibold fs-5">Produk</a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="javascript:void(0)" class="text-decoration-none text-dark fw-semibold fs-5">Transaksi</a>
+                    <a href="{{ route('client.orders') }}" class="text-decoration-none text-dark fw-semibold fs-5">Transaksi</a>
                     </li>
                 </ul>
             </div>

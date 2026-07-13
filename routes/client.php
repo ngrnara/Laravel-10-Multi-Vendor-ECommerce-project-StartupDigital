@@ -16,6 +16,9 @@ Route::prefix('account')->name('client.')->group(function () {
     Route::middleware('auth:client')->group(function () {
         Route::post('/logout', [ClientController::class, 'logout'])->name('logout');
 
+        // Route untuk mengakses halaman riwayat transaksi client
+        Route::get('/orders', [ClientController::class, 'orders'])->name('orders');
+
         Route::prefix('checkout')->name('checkout.')->group(function () {
             Route::get('/cities/{province}', [CheckoutController::class, 'getCities'])->name('cities');
             Route::get('/success/{order}', [CheckoutController::class, 'success'])->name('success');

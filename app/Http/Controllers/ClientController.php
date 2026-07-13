@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Client;
+use App\Models\Order;
 
 class ClientController extends Controller
 {
@@ -66,4 +67,26 @@ class ClientController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('home-page');
     }
+
+    public function orders()
+        {
+            // Ambil ID client yang sedang login
+            $clientId = Auth::guard('client')->id();
+
+            // 2. Query data orders berdasarkan statusnya masing-masing
+            $pendingOrders   = Order::where('client_id', $clientId)->where('status', 'Pending')->orderBy('created_at', 'desc')->get();
+            $ongoingOrders   = Order::where('client_id', $clientId)->whereIn('status', ['Processing', 'Shipped'])->orderBy('created_at', 'desc')->get();
+            $completedOrders = Order::where('client_id', $clientId)->where('status', 'Completed')->orderBy('created_at', 'desc')->get();
+            $cancelledOrders = Order::where('client_id', $clientId)->where('status', 'Cancelled')->orderBy('created_at', 'desc')->get();
+
+            // 3. Lempar data ke view front.pages.client.orders
+            return view('front.pages.client.orders', [
+                'pageTitle' => 'Riwayat Transaksi',
+                'pendingOrders' => $pendingOrders,
+                'ongoingOrders' => $ongoingOrders,
+                'completedOrders' => $completedOrders,
+                'cancelledOrders' => $cancelledOrders,
+            ]);
+        }
+
 }

@@ -30,22 +30,25 @@ Route::prefix('seller')->name('seller.')->group(function(){
           Route::post('/change-profile-picture','changeProfilePicture')->name('change-profile-picture');
           Route::get('/shop-settings','shopSettings')->name('shop-settings');
           Route::post('/shop-setup','shopSetup')->name('shop-setup');
+          
+          // Route Pesanan / Orders Seller
+          Route::get('/orders', 'orders')->name('orders');
        });
 
        //Product routes
        Route::prefix('product')->name('product.')->group(function(){
-           Route::controller(ProductController::class)->group(function(){
-              Route::get('/all','allProducts')->name('all-products');
-              Route::get('/add','addProduct')->name('add-product');
-              Route::get('/get-product-category','getProductCategory')->name('get-product-category');
-              Route::post('/create','createProduct')->name('create-product');
-              Route::get('/edit','editProduct')->name('edit-product');
-              Route::post('/update','updateProduct')->name('update-product');
-              Route::post('/upload-images','uploadProductImages')->name('upload-images');
-              Route::get('/get-product-images','getProductImages')->name('get-product-images');
-              Route::post('/delete-product-image','deleteProductImage')->name('delete-product-image');
-              Route::post('/delete-product','deleteProduct')->name('delete-product');
-           });
+          Route::controller(ProductController::class)->group(function(){
+             Route::get('/all','allProducts')->name('all-products');
+             Route::get('/add','addProduct')->name('add-product');
+             Route::get('/get-product-category','getProductCategory')->name('get-product-category');
+             Route::post('/create','createProduct')->name('create-product');
+             Route::get('/edit','editProduct')->name('edit-product');
+             Route::post('/update','updateProduct')->name('update-product');
+             Route::post('/upload-images','uploadProductImages')->name('upload-images');
+             Route::get('/get-product-images','getProductImages')->name('get-product-images');
+             Route::post('/delete-product-image','deleteProductImage')->name('delete-product-image');
+             Route::post('/delete-product','deleteProduct')->name('delete-product');
+          });
        });
    });
 

@@ -494,11 +494,11 @@
 
     
                         <li>
-                            <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon bi bi-receipt-cutoff"></span
-                                ><span class="mtext">Invoice</span>
-                            </a>
-                        </li>
+							<a href="{{ route('seller.orders') }}" class="dropdown-toggle no-arrow">
+								<span class="micon bi bi-receipt-cutoff"></span>
+								<span class="mtext">Invoice</span>
+							</a>
+						</li>
 
                         <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle {{ Route::is('seller.product.*') ? 'active' : '' }}">
