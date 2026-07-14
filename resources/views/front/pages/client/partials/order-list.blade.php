@@ -24,15 +24,15 @@
                         <td>Rp {{ number_format($order->total, 0, ',', '.') }}</td>
                         <td>
                             @if($order->status == 'Pending')
-                                <span class="badge badge-warning">Menunggu Pembayaran</span>
+                                <span class="badge badge-warning" style="color:#000;">Menunggu Pembayaran</span>
                             @elseif($order->status == 'Processing')
-                                <span class="badge badge-info">Diproses Seller</span>
+                                <span class="badge badge-info" style="color:#000;">Diproses Seller</span>
                             @elseif($order->status == 'Shipped')
-                                <span class="badge badge-primary">Dalam Pengiriman</span>
+                                <span class="badge badge-primary" style="color:#000;">Dalam Pengiriman</span>
                             @elseif($order->status == 'Completed')
-                                <span class="badge badge-success">Selesai</span>
+                                <span class="badge badge-success" style="color:#000;">Selesai</span>
                             @else
-                                <span class="badge badge-danger">Batal</span>
+                                <span class="badge badge-danger" style="color:#000;">Batal</span>
                             @endif
                         </td>
                         <td>
