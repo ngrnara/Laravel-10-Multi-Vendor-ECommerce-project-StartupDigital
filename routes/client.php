@@ -36,4 +36,7 @@ Route::middleware('auth:client')->prefix('cart')->name('cart.')->group(function 
     Route::post('/add/{product}', [CartController::class, 'store'])->name('add');
     Route::put('/{cartItem}', [CartController::class, 'update'])->name('update');
     Route::delete('/{cartItem}', [CartController::class, 'destroy'])->name('destroy');
+
+    Route::get('/checkout', [CheckoutController::class, 'cartCheckout'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'cartCheckoutStore'])->name('checkout.store');
 });

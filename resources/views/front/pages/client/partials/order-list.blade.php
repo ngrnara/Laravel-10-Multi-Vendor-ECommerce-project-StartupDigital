@@ -19,8 +19,18 @@
                 @foreach($orders as $order)
                     <tr>
                         <td>{{ $order->created_at->format('d M Y H:i') }}</td>
-                        <td><strong>{{ $order->product_name }}</strong></td>
-                        <td>{{ $order->quantity }}</td>
+                        @if ($order->items->isNotEmpty())
+                            <td>
+                                <strong>{{ $order->items->first()->product_name }}</strong>
+                                @if ($order->items->count() > 1)
+                                    <span class="text-muted">(+{{ $order->items->count() - 1 }} produk lainnya)</span>
+                                @endif
+                            </td>
+                            <td>{{ $order->items->sum('quantity') }}</td>
+                        @else
+                            <td><strong>{{ $order->product_name }}</strong></td>
+                            <td>{{ $order->quantity }}</td>
+                        @endif
                         <td>Rp {{ number_format($order->total, 0, ',', '.') }}</td>
                         <td>
                             @if($order->status == 'Pending')
