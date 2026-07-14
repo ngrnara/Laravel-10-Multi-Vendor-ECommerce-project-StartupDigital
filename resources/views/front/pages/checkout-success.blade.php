@@ -15,10 +15,22 @@
                             <span>No. Pesanan</span>
                             <strong>#{{ $order->id }}</strong>
                         </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Produk</span>
-                            <span>{{ $order->product_name }} x{{ $order->quantity }}</span>
-                        </div>
+                        @if ($order->items->isNotEmpty())
+                            <div class="mb-2">
+                                <span class="d-block mb-1">Produk</span>
+                                @foreach ($order->items as $item)
+                                    <div class="d-flex justify-content-between">
+                                        <span class="text-muted">{{ $item->product_name }} x{{ $item->quantity }}</span>
+                                        <span class="text-muted">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Produk</span>
+                                <span>{{ $order->product_name }} x{{ $order->quantity }}</span>
+                            </div>
+                        @endif
                         <div class="d-flex justify-content-between mb-2">
                             <span>Dikirim Ke</span>
                             <span class="text-end">{{ $order->recipient_address }}, {{ $order->city->name ?? '-' }}, {{ $order->province->name ?? '-' }} {{ $order->postal_code }}</span>

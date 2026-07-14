@@ -16,7 +16,7 @@ use constDefaults;
 use Illuminate\Support\Facades\File;
 use Mberecall\Kropify\Kropify;
 use App\Models\Shop;
-use App\Models\Order;
+use App\Models\Product;
 
 class SellerController extends Controller
 {
@@ -35,13 +35,31 @@ class SellerController extends Controller
     } //End Method
 
     public function home(Request $request){
+        $sellerId = Auth::guard('seller')->id();
+
+        $totalProducts    = Product::where('seller_id', $sellerId)->count();
+        $activeProducts   = Product::where('seller_id', $sellerId)->where('visibility', 1)->count();
+        $inactiveProducts = Product::where('seller_id', $sellerId)->where('visibility', 0)->count();
+
+        $recentProducts = Product::where('seller_id', $sellerId)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        $shop = Shop::where('seller_id', $sellerId)->first();
+
         $data = [
-            'pageTitle'=>'Seller Dashboard'
+            'pageTitle'=>'Seller Dashboard',
+            'totalProducts'=>$totalProducts,
+            'activeProducts'=>$activeProducts,
+            'inactiveProducts'=>$inactiveProducts,
+            'recentProducts'=>$recentProducts,
+            'shop'=>$shop,
         ];
         return view('back.pages.seller.home',$data);
     } //End Method
 
-   public function createSeller(Request $request){
+    public function createSeller(Request $request){
         //Validate Seller Registration Form
         $request->validate([
             'name'=>'required',
@@ -54,9 +72,6 @@ class SellerController extends Controller
         $seller->name = $request->name;
         $seller->email = $request->email;
         $seller->password = Hash::make($request->password);
-        
-        // bypass verifikasi email karena di localhost (isi field sesuai struktur DB kelompokmu, biasanya verified/status)
-        // jika nanti tidak bisa login karena belum verifikasi, kita bisa paksa datanya true di sini.
         $saved = $seller->save();
 
         if( $saved ){
@@ -87,10 +102,9 @@ class SellerController extends Controller
            );
 
            if( sendEmail($mailConfig) ){
-              // DIUBAH DI SINI: Langsung pindah ke halaman login dengan pesan sukses
-              return redirect()->route('seller.login')->with('success','Registrasi berhasil! Silakan langsung login.');
+              return redirect()->route('seller.register-success');
            }else{
-              return redirect()->route('seller.register')->with('fail','Something went wrong while sending verification link.');
+             return redirect()->route('seller.register')->with('fail','Something went wrong while sending verification link.');
            }
         }else{
             return redirect()->route('seller.register')->with('fail','Something went wrong.');
@@ -151,8 +165,13 @@ class SellerController extends Controller
         );
 
         if( Auth::guard('seller')->attempt($creds) ){
-    // Bypassed: Pengecekan verifikasi email dimatikan agar langsung masuk ke dashboard
-            return redirect()->route('seller.home');
+            // return redirect()->route('seller.home');
+            if( !auth('seller')->user()->verified ){
+                auth('seller')->logout();
+                return redirect()->route('seller.login')->with('fail','Your account is not verified. Check in your email and click on the link we had sent in order to verify your email for seller account.');
+            }else{
+                return redirect()->route('seller.home');
+            }
         }else{
             return redirect()->route('seller.login')->withInput()->with('fail','Incorrect password.');
         }
@@ -401,18 +420,4 @@ class SellerController extends Controller
             return redirect()->route('seller.shop-settings')->with('fail','Error on updating your shop info.');
         }
     }
-
-    // Tambahkan method ini di dalam class SellerController
-    public function orders()
-{
-    // Mengambil data dari DB
-    $orders = Order::orderBy('created_at', 'desc')->get();
-
-    // Pastikan string ini mencerminkan struktur folder: back -> pages -> seller -> orders
-    return view('back.pages.seller.orders', [
-        'pageTitle' => 'Pesanan Masuk',
-        'orders' => $orders
-    ]);
-}
-
 }

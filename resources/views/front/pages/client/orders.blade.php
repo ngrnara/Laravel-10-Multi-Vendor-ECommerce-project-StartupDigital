@@ -8,22 +8,22 @@
 
             <ul class="nav nav-tabs mb-4" id="orderTabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">
+                    <a class="nav-link active" id="pending-tab" data-bs-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="true">
                         Belum Bayar <span class="badge badge-warning">{{ $pendingOrders->count() }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="ongoing-tab" data-toggle="tab" href="#ongoing" role="tab" aria-controls="ongoing" aria-selected="false">
+                    <a class="nav-link" id="ongoing-tab" data-bs-toggle="tab" href="#ongoing" role="tab" aria-controls="ongoing" aria-selected="false">
                         Dalam Proses <span class="badge badge-info">{{ $ongoingOrders->count() }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">
+                    <a class="nav-link" id="completed-tab" data-bs-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">
                         Selesai <span class="badge badge-success">{{ $completedOrders->count() }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="cancelled-tab" data-toggle="tab" href="#cancelled" role="tab" aria-controls="cancelled" aria-selected="false">
+                    <a class="nav-link" id="cancelled-tab" data-bs-toggle="tab" href="#cancelled" role="tab" aria-controls="cancelled" aria-selected="false">
                         Dibatalkan <span class="badge badge-danger">{{ $cancelledOrders->count() }}</span>
                     </a>
                 </li>

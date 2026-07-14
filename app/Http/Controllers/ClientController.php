@@ -74,10 +74,10 @@ class ClientController extends Controller
             $clientId = Auth::guard('client')->id();
 
             // 2. Query data orders berdasarkan statusnya masing-masing
-            $pendingOrders   = Order::where('client_id', $clientId)->where('status', 'Pending')->orderBy('created_at', 'desc')->get();
-            $ongoingOrders   = Order::where('client_id', $clientId)->whereIn('status', ['Processing', 'Shipped'])->orderBy('created_at', 'desc')->get();
-            $completedOrders = Order::where('client_id', $clientId)->where('status', 'Completed')->orderBy('created_at', 'desc')->get();
-            $cancelledOrders = Order::where('client_id', $clientId)->where('status', 'Cancelled')->orderBy('created_at', 'desc')->get();
+            $pendingOrders   = Order::with('items')->where('client_id', $clientId)->where('status', 'Pending')->orderBy('created_at', 'desc')->get();
+            $ongoingOrders   = Order::with('items')->where('client_id', $clientId)->whereIn('status', ['Processing', 'Shipped'])->orderBy('created_at', 'desc')->get();
+            $completedOrders = Order::with('items')->where('client_id', $clientId)->where('status', 'Completed')->orderBy('created_at', 'desc')->get();
+            $cancelledOrders = Order::with('items')->where('client_id', $clientId)->where('status', 'Cancelled')->orderBy('created_at', 'desc')->get();
 
             // 3. Lempar data ke view front.pages.client.orders
             return view('front.pages.client.orders', [

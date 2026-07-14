@@ -28,7 +28,6 @@
         />
         <link rel="stylesheet" type="text/css" href="/back/vendors/styles/style.css" />
 
-    
         <script>
             (function (w, d, s, l, i) {
                 w[l] = w[l] || [];
@@ -42,18 +41,227 @@
             })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
         </script>
         <link rel="stylesheet" href="/extra-assets/ijabo/ijabo.min.css">
-       <link rel="stylesheet" href="/extra-assets/ijaboCropTool/ijaboCropTool.min.css">
-       <link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.2/jquery-ui.min.css">
-       <link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.2/jquery-ui.structure.min.css">
-       <link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.2/jquery-ui.theme.min.css">
-       <link rel="stylesheet" href="/extra-assets/summernote/summernote-bs4.min.css">
-       <style>
-        .swal2-popup{
-            font-size: 0.78em;
-        }
-       </style>
-       @kropifyStyles
-       @livewireStyles
+        <link rel="stylesheet" href="/extra-assets/ijaboCropTool/ijaboCropTool.min.css">
+        <link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.2/jquery-ui.min.css">
+        <link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.2/jquery-ui.structure.min.css">
+        <link rel="stylesheet" href="/extra-assets/jquery-ui-1.13.2/jquery-ui.theme.min.css">
+        <link rel="stylesheet" href="/extra-assets/summernote/summernote-bs4.min.css">
+        
+        <style>
+            .swal2-popup {
+                font-size: 0.78em;
+            }
+
+            /* ==========================================
+               KUSTOMISASI TEMA WARNA HIJAU 
+               ========================================== */
+            :root {
+                --primary-green: #0fa862; /* Warna hijau utama */
+                --light-green: #e6f7ee;   /* Background hijau muda untuk menu aktif */
+                --dark-green: #0b7a48;    /* Warna hijau saat tombol di-hover */
+            }
+
+            /* Mengubah warna teks biru bawaan DeskApp */
+            .text-blue, .text-primary {
+                color: var(--primary-green) !important;
+            }
+
+            /* Mengubah tombol utama (Button Primary) */
+            .btn-primary {
+                background-color: var(--primary-green) !important;
+                border-color: var(--primary-green) !important;
+            }
+            .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+                background-color: var(--dark-green) !important;
+                border-color: var(--dark-green) !important;
+            }
+
+            /* Mengubah tombol outline */
+            .btn-outline-primary {
+                color: var(--primary-green) !important;
+                border-color: var(--primary-green) !important;
+            }
+            .btn-outline-primary:hover, .btn-outline-primary.active, .btn-outline-primary:active {
+                background-color: var(--primary-green) !important;
+                color: #fff !important;
+                border-color: var(--primary-green) !important;
+            }
+
+            /* Mengubah menu sidebar yang aktif */
+            .sidebar-menu > ul > li > .dropdown-toggle.active {
+                background-color: var(--light-green) !important;
+                color: var(--primary-green) !important;
+                border-left: 4px solid var(--primary-green) !important;
+            }
+            .sidebar-menu .submenu li a.active {
+                color: var(--primary-green) !important;
+            }
+
+            /* Mengubah indikator / badge aktif */
+            .notification-active {
+                background: var(--primary-green) !important;
+            }
+
+            /* Mengubah progress bar pre-loader */
+            .pre-loader .bar {
+                background: var(--primary-green) !important;
+            }
+
+            /* ==========================================
+               MENU SIDEBAR: HIJAU HANYA SAAT DIKLIK/AKTIF
+               (background sidebar TETAP default, tidak diubah)
+               ========================================== */
+            .left-side-bar .sidebar-menu ul li a.active,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle.active {
+                background-color: var(--primary-green) !important;
+                color: #ffffff !important;
+                border-left: 4px solid var(--dark-green) !important;
+            }
+            /* Menghapus background hitam bawaan tema saat menu di-hover */
+            .left-side-bar .sidebar-menu ul li a:hover,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle:hover,
+            .left-side-bar .sidebar-menu ul li:hover > a,
+            .left-side-bar .sidebar-menu ul li:hover > .dropdown-toggle {
+                background-color: transparent !important;
+                color: inherit !important;
+            }
+            /* Tapi tetap hijau kalau memang menu itu sedang aktif, walau di-hover */
+            .left-side-bar .sidebar-menu ul li a.active:hover,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle.active:hover {
+                background-color: var(--primary-green) !important;
+                color: #ffffff !important;
+            }
+
+            /* ==========================================
+               HAPUS SEMUA BACKGROUND HITAM DI SIDEBAR
+               (default, hover, focus - untuk semua item menu & submenu)
+               + Transisi halus agar animasi terasa smooth
+               ========================================== */
+            .left-side-bar .sidebar-menu ul li a,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle,
+            .left-side-bar .sidebar-menu ul li,
+            .left-side-bar .sidebar-menu ul.submenu li a,
+            .left-side-bar .sidebar-menu ul.submenu li {
+                background-color: transparent !important;
+                background: transparent !important;
+                transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+            }
+            .left-side-bar .sidebar-menu ul li a:hover,
+            .left-side-bar .sidebar-menu ul li a:focus,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle:hover,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle:focus,
+            .left-side-bar .sidebar-menu ul li:hover,
+            .left-side-bar .sidebar-menu ul.submenu li a:hover {
+                background-color: var(--light-green) !important;
+                background: var(--light-green) !important;
+                color: var(--dark-green) !important;
+            }
+
+            /* Menu yang benar-benar aktif tetap hijau (prioritas paling akhir/tinggi) */
+            .left-side-bar .sidebar-menu ul li a.active,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle.active,
+            .left-side-bar .sidebar-menu ul li a.active:hover,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle.active:hover {
+                background-color: var(--primary-green) !important;
+                color: #ffffff !important;
+                border-left: 4px solid var(--dark-green) !important;
+            }
+            .left-side-bar .sidebar-menu ul.submenu li a.active {
+                background-color: var(--primary-green) !important;
+                color: #ffffff !important;
+            }
+
+            /* ==========================================
+               PAKSA SIDEBAR SELALU PUTIH
+               (mengabaikan toggle Dark/Light bawaan tema)
+               ========================================== */
+            body.sidebar-dark .left-side-bar,
+            body .left-side-bar,
+            .left-side-bar {
+                background-color: #ffffff !important;
+            }
+            body.sidebar-dark .left-side-bar .sidebar-menu ul li a,
+            body.sidebar-dark .left-side-bar .sidebar-menu ul li .dropdown-toggle,
+            .left-side-bar .sidebar-menu ul li a,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle {
+                color: #1f2937 !important;
+            }
+            body.sidebar-dark .left-side-bar .sidebar-menu ul li a .mtext,
+            .left-side-bar .sidebar-menu ul li a .mtext {
+                color: inherit !important;
+            }
+            body.sidebar-dark .left-side-bar .sidebar-small-cap,
+            .left-side-bar .sidebar-small-cap {
+                color: var(--primary-green) !important;
+            }
+            body.sidebar-dark .left-side-bar .dropdown-divider,
+            .left-side-bar .dropdown-divider {
+                border-color: #e5e7eb !important;
+            }
+            /* Menu aktif tetap hijau dengan teks putih (supaya tetap kontras) */
+            body.sidebar-dark .left-side-bar .sidebar-menu ul li a.active,
+            body.sidebar-dark .left-side-bar .sidebar-menu ul li .dropdown-toggle.active,
+            .left-side-bar .sidebar-menu ul li a.active,
+            .left-side-bar .sidebar-menu ul li .dropdown-toggle.active {
+                color: #ffffff !important;
+            }
+
+            .left-side-bar .sidebar-menu ul li .submenu li a.active {
+                background-color: var(--primary-green) !important;
+                color: #ffffff !important;
+            }
+
+            /* ==========================================
+               TOOLTIP DETAIL SAAT HOVER MENU SIDEBAR
+               ========================================== */
+            .left-side-bar .sidebar-menu ul li {
+                position: relative;
+            }
+            .left-side-bar .sidebar-menu ul li a[data-tooltip]::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                left: calc(100% + 14px);
+                top: 50%;
+                transform: translateY(-50%) translateX(-8px);
+                background-color: #1f2937;
+                color: #ffffff;
+                padding: 7px 12px;
+                border-radius: 6px;
+                font-size: 12.5px;
+                font-weight: 500;
+                white-space: nowrap;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+                z-index: 1050;
+            }
+            /* Anak panah kecil di sisi kiri tooltip */
+            .left-side-bar .sidebar-menu ul li a[data-tooltip]::before {
+                content: "";
+                position: absolute;
+                left: calc(100% + 6px);
+                top: 50%;
+                transform: translateY(-50%) translateX(-8px);
+                border-width: 6px 8px 6px 0;
+                border-style: solid;
+                border-color: transparent #1f2937 transparent transparent;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+                z-index: 1050;
+            }
+            .left-side-bar .sidebar-menu ul li a[data-tooltip]:hover::after,
+            .left-side-bar .sidebar-menu ul li a[data-tooltip]:hover::before {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(-50%) translateX(0);
+            }
+        </style>
+        @kropifyStyles
+        @livewireStyles
         @stack('stylesheets')
     </head>
     <body>
@@ -92,15 +300,12 @@
                                     href="#"
                                     role="button"
                                     data-toggle="dropdown"
-                                check-data-toggle="dropdown"
                                 >
                                     <i class="ion-arrow-down-c"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <div class="form-group row">
-                                        <label class="col-sm-12 col-md-2 col-form-label"
-                                            >From</label
-                                        >
+                                        <label class="col-sm-12 col-md-2 col-form-label">From</label>
                                         <div class="col-sm-12 col-md-10">
                                             <input
                                                 class="form-control form-control-sm form-control-line"
@@ -118,9 +323,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-12 col-md-2 col-form-label"
-                                            >Subject</label
-                                        >
+                                        <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
                                         <div class="col-sm-12 col-md-10">
                                             <input
                                                 class="form-control form-control-sm form-control-line"
@@ -229,17 +432,7 @@
                     </div>
                 </div>
 
-                {{-- <livewire:admin-seller-header-profile-info> --}}
-                    @livewire('admin-seller-header-profile-info')
-
-                
-
-
-                <div class="github-link">
-                    <a href="https://github.com/dropways/deskapp" target="_blank"
-                        ><img src="/back/vendors/images/github.svg" alt=""
-                    /></a>
-                </div>
+                @livewire('admin-seller-header-profile-info')
             </div>
         </div>
 
@@ -247,9 +440,7 @@
             <div class="sidebar-title">
                 <h3 class="weight-600 font-16 text-blue">
                     Layout Settings
-                    <span class="btn-block font-weight-400 font-12"
-                        >User Interface Settings</span
-                    >
+                    <span class="btn-block font-weight-400 font-12">User Interface Settings</span>
                 </h3>
                 <div class="close-sidebar" data-toggle="right-sidebar-close">
                     <i class="icon-copy ion-close-round"></i>
@@ -415,13 +606,12 @@
 
         <div class="left-side-bar">
             <div class="brand-logo">
-                <a href="/">
-                    <img src="/images/site/{{ get_settings()->site_logo }}" alt="" class="dark-logo" />
-                    <img
-                        src="/images/site/{{ get_settings()->site_logo }}"
-                        alt=""
-                        class="light-logo"
-                    />
+                <a href="/" class="lapak-ikan-logo">
+                    <svg viewBox="0 0 235 50" xmlns="http://www.w3.org/2000/svg" style="height:34px;width:auto;">
+                        <text x="4" y="34" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="28" fill="var(--primary-green)">LAPAK</text>
+                        <rect x="112" y="5" width="112" height="40" rx="10" fill="var(--primary-green)"></rect>
+                        <text x="168" y="33" text-anchor="middle" font-family="'Inter', Arial, sans-serif" font-weight="800" font-size="28" fill="#ffffff">IKAN</text>
+                    </svg>
                 </a>
                 <div class="close-sidebar" data-toggle="left-sidebar-close">
                     <i class="ion-close-round"></i>
@@ -434,23 +624,22 @@
                         @if ( Route::is('admin.*') )
                         <li>
                             <a href="{{ route('admin.home') }}" class="dropdown-toggle no-arrow {{ Route::is('admin.home') ? 'active' : '' }}">
-                                <span class="micon fa fa-home"></span
-                                ><span class="mtext">Home</span>
-                            </a>
-                        </div>
-
-                        <li>
-                            <a href="{{ route('admin.manage-categories.cats-subcats-list') }}" class="dropdown-toggle no-arrow {{ Route::is('admin.manage-categories.*') ? 'active' : '' }}">
-                                <span class="micon dw dw-align-left3"></span
-                                ><span class="mtext">Manage Categories</span>
+                                <span class="micon fa fa-home"></span>
+                                <span class="mtext">Home</span>
                             </a>
                         </li>
 
-    
+                        <li>
+                            <a href="{{ route('admin.manage-categories.cats-subcats-list') }}" class="dropdown-toggle no-arrow {{ Route::is('admin.manage-categories.*') ? 'active' : '' }}">
+                                <span class="micon dw dw-align-left3"></span>
+                                <span class="mtext">Manage Categories</span>
+                            </a>
+                        </li>
+
                         <li>
                             <a href="invoice.html" class="dropdown-toggle no-arrow">
-                                <span class="micon bi bi-receipt-cutoff"></span
-                                ><span class="mtext">Invoice</span>
+                                <span class="micon bi bi-receipt-cutoff"></span>
+                                <span class="mtext">Invoice</span>
                             </a>
                         </li>
                         <li>
@@ -463,50 +652,43 @@
                         <li>
                             <a
                                 href="{{ route('admin.profile') }}"
-                                
                                 class="dropdown-toggle no-arrow {{ Route::is('admin.profile') ? 'active' : '' }}"
                             >
                                 <span class="micon fa fa-user"></span>
-                                <span class="mtext"
-                                    >Profile
-                                    </span>
+                                <span class="mtext">Profile</span>
                             </a>
                         </li>
                         <li>
                             <a
                                 href="{{ route('admin.settings') }}"
-                                
                                 class="dropdown-toggle no-arrow {{ Route::is('admin.settings') ? 'active' : '' }}"
                             >
                                 <span class="micon icon-copy fi-widget"></span>
-                                <span class="mtext"
-                                    >Settings
-                                    </span>
+                                <span class="mtext">Settings</span>
                             </a>
                         </li>
                         @else
                         <li>
-                            <a href="{{ route('seller.home') }}" class="dropdown-toggle no-arrow {{ Route::is('seller.home') ? 'active' : '' }}">
-                                <span class="micon fa fa-home"></span
-                                ><span class="mtext">Home</span>
+                            <a href="{{ route('seller.home') }}" class="dropdown-toggle no-arrow {{ Route::is('seller.home') ? 'active' : '' }}" data-tooltip="Ringkasan aktivitas toko Anda">
+                                <span class="micon fa fa-home"></span>
+                                <span class="mtext">Home</span>
                             </a>
                         </li>
 
-    
                         <li>
-							<a href="{{ route('seller.orders') }}" class="dropdown-toggle no-arrow">
-								<span class="micon bi bi-receipt-cutoff"></span>
-								<span class="mtext">Invoice</span>
-							</a>
-						</li>
+                            <a href="{{ route('seller.orders') }}" class="dropdown-toggle no-arrow" data-tooltip="Lihat daftar pesanan & invoice">
+                                <span class="micon bi bi-receipt-cutoff"></span>
+                                <span class="mtext">Invoice</span>
+                            </a>
+                        </li>
 
                         <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle {{ Route::is('seller.product.*') ? 'active' : '' }}">
+                            <a href="javascript:;" class="dropdown-toggle {{ Route::is('seller.product.*') ? 'active' : '' }}" data-tooltip="Kelola produk yang Anda jual">
                                 <span class="micon bi bi-bag"></span><span class="mtext">Manage Products</span>
                             </a>
                             <ul class="submenu">
-                                <li><a href="{{ route('seller.product.all-products') }}" class="{{ Route::is('seller.product.all-products') ? 'active' : '' }}">All Products</a></li>
-                                <li><a href="{{ route('seller.product.add-product') }}" class="{{ Route::is('seller.product.add-product') ? 'active' : '' }}">Add Product</a></li>
+                                <li><a href="{{ route('seller.product.all-products') }}" class="{{ Route::is('seller.product.all-products') ? 'active' : '' }}" data-tooltip="Lihat semua produk">All Products</a></li>
+                                <li><a href="{{ route('seller.product.add-product') }}" class="{{ Route::is('seller.product.add-product') ? 'active' : '' }}" data-tooltip="Tambahkan produk baru">Add Product</a></li>
                             </ul>
                         </li>
 
@@ -520,32 +702,25 @@
                         <li>
                             <a
                                 href="{{ route('seller.profile') }}"
-                                
                                 class="dropdown-toggle no-arrow {{ Route::is('seller.profile') ? 'active' : '' }}"
+                                data-tooltip="Ubah data & foto profil Anda"
                             >
                                 <span class="micon fa fa-user"></span>
-                                <span class="mtext"
-                                    >Profile
-                                    </span>
+                                <span class="mtext">Profile</span>
                             </a>
                         </li>
-    <li>
+                        <li>
                             <a
                                 href="{{ route('seller.shop-settings') }}"
-                                
                                 class="dropdown-toggle no-arrow {{ Route::is('seller.shop-settings') ? 'active' : '' }}"
+                                data-tooltip="Atur nama, logo & info toko"
                             >
                                 <span class="micon bi bi-shop"></span>
-                                <span class="mtext"
-                                    >Shop Settigs
-                                    </span>
+                                <span class="mtext">Shop Settings</span>
                             </a>
                         </li>
 
                         @endif
-                    
-                
-                        
                     </ul>
                 </div>
             </div>
@@ -555,14 +730,13 @@
         <div class="main-container">
             <div class="pd-ltr-20 xs-pd-20-10">
                 <div class="min-height-200px">
-            
                     <div>
                         @yield('content')
                     </div>
                 </div>
                 <div class="footer-wrap pd-20 mb-20 card-box">
                     DeskApp - Bootstrap 4 Admin Template By
-                    <a href="https://github.com/dropways" target="_blank"
+                    <a href="https://github.com/dropways" target="_blank" style="color: var(--primary-green); font-weight: 600;"
                         >Ankit Hingarajiya</a
                     >
                 </div>
@@ -595,12 +769,12 @@
         </script>
         <script>
             window.addEventListener('showToastr', function(event){
-                  toastr.remove();
-                  if( event.detail[0].type === 'info' ){ toastr.info(event.detail[0].message); }
-                  else if( event.detail[0].type === 'success' ){ toastr.success(event.detail[0].message); }
-                  else if( event.detail[0].type === 'error' ){ toastr.error(event.detail[0].message); }
-                  else if( event.detail[0].type === 'warning' ){ toastr.warning(event.detail[0].message); }
-                  else{ return false; }
+                 toastr.remove();
+                 if( event.detail[0].type === 'info' ){ toastr.info(event.detail[0].message); }
+                 else if( event.detail[0].type === 'success' ){ toastr.success(event.detail[0].message); }
+                 else if( event.detail[0].type === 'error' ){ toastr.error(event.detail[0].message); }
+                 else if( event.detail[0].type === 'warning' ){ toastr.warning(event.detail[0].message); }
+                 else{ return false; }
             });
         </script>
         @kropifyScripts
