@@ -56,9 +56,9 @@
 						 @else
 						      <li><a href="{{ route('seller.login') }}">Login</a></li>
 						 @endif
-									
+
 						@endif
-									
+
 					</ul>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 		<!-- js -->
 		<script src="/back/vendors/scripts/core.js"></script>
 		<script src="/back/vendors/scripts/script.min.js"></script>
