@@ -70,14 +70,14 @@
     }
     .logo-box-lapak {
         background-color: #ffffff;
-        color: #006837;
+        color: var(--theme-color);
         font-weight: 900;
         font-size: 1.4rem;
         padding: 4px 12px;
         letter-spacing: 0.5px;
     }
     .logo-box-ikan {
-        background-color: #39b54a;
+        background-color: var(--theme-color);
         color: #ffffff;
         font-weight: 900;
         font-size: 1.4rem;
@@ -112,7 +112,7 @@
     }
     .btn-outline-register:hover {
         background-color: #ffffff;
-        color: #006837;
+        color: var(--theme-color);
     }
 
     .illustration-container {

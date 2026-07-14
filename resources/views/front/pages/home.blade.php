@@ -195,18 +195,6 @@
                                                         <img src="/images/products/{{ $product->product_image }}"
                                                             class="img-fluid blur-up lazyload" alt="{{ $product->name }}" style="object-fit: cover; width: 100%; height: 200px;">
                                                     </a>
-                                                    <ul class="product-option">
-                                                        <li title="View">
-                                                            <a href="javascript:void(0)">
-                                                                <i class="fa fa-eye"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li title="Wishlist">
-                                                            <a href="javascript:void(0)">
-                                                                <i class="fa fa-heart"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
                                                 </div>
                                                 <div class="product-detail">
                                                     <a href="javascript:void(0)">
@@ -231,10 +219,16 @@
                                                         <h6 class="theme-color instock">Stok Tersedia</h6>
                                                     </div>
 
-                                                    <div class="add-to-cart-box mt-2">
+                                                    <div class="add-to-cart-box mt-2 d-flex gap-2">
+                                                        <form method="POST" action="{{ route('cart.add', $product->id) }}" class="flex-shrink-0">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-sm btn-outline-success btn-cart-add" style="border: 2px solid var(--theme-color); color:var(--theme-color);" title="Tambah ke Keranjang">
+                                                                <i class="fa fa-cart-plus"></i>
+                                                            </button>
+                                                        </form>
                                                         <a href="{{ route('client.checkout.index', $product->id) }}"
-                                                            class="btn btn-md bg-dark cart-button text-white w-100 btn-bg-color">
-                                                            <i class="fa fa-shopping-cart me-1"></i> Beli
+                                                            class="btn text-white flex-grow-1 btn-beli">
+                                                            <i class="fa fa-bolt me-1"></i> Beli
                                                         </a>
                                                     </div>
                                                 </div>
@@ -380,10 +374,9 @@
 
                                             <div class="add-to-cart-box mt-2">
                                                 <a href="cart.html"
-                                                    class="btn btn-md bg-dark cart-button text-white w-100 btn-bg-color"><i
+                                                    class=" btn-add-cart btn btn-md bg-dark cart-button text-white w-100 btn-bg-color"><i
                                                         class="icon-copy bi bi-cart-plus-fill"></i>
-                                                    Add To
-                                                    Cart</a>
+                                                    Add ToCart</a>
                                             </div>
                                         </div>
                                     </div>
@@ -790,7 +783,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="section-t-space">
+                <div class="section-t-space">
                     <div class="banner-contain hover-effect">
                         <img src="/front/images/b.png" class="bg-img blur-up lazyload" alt>
                         <div class="banner-details p-center banner-b-space w-100 text-center">
@@ -806,7 +799,7 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="title section-t-space">
                     <h2>Latest on Blog</h2>
