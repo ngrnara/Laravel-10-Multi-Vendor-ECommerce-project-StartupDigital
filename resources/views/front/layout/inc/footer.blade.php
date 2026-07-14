@@ -104,6 +104,12 @@
     --text-muted:       rgba(255, 255, 255, 0.95);
     --hairline:         rgba(255, 255, 255, 0.25);
 
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     position: relative;
     background: var(--bg-gray-main) !important;
     color: var(--text-light) !important;
@@ -117,19 +123,10 @@
     box-sizing: border-box;
   }
 
-  .sipari-footer .wave-line-divider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 30px;
-    display: block;
-    z-index: 2;
-    transform: translateY(-99%);
-  }
 
   .sipari-footer .wrap {
     max-width: 1180px;
+    height: auto;
     margin: 0 auto;
     padding: 0 32px 0;
   }
@@ -220,12 +217,12 @@
     transition: color .18s ease !important;
   }
   .sipari-footer ul.vertical-menu li a:hover {
-    color: var(--text-light) !important;
+    color: var(--text-dark) !important;
   }
   .sipari-footer ul.vertical-menu li a::before {
     content: ">" !important;
     margin-right: 8px !important;
-    color: var(--text-light) !important;
+    color: var(--text-dark) !important;
     font-family: monospace !important;
     font-weight: bold !important;
   }

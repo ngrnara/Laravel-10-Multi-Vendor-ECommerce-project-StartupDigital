@@ -63,10 +63,12 @@
 <!-- Cart + Account -->
 <div class="col-lg-3 col-6 text-end d-flex align-items-center justify-content-end">
     @auth('client')
-            <a href="javascript:void(0)" class="btn btn-outline-secondary position-relative me-2">
-                <i class="fa fa-shopping-cart"></i>
-                <span class="badge rounded-pill" style="background-color:var(--theme-color);">0</span>
-            </a>
+                <a href="{{ route('cart.index') }}" class="btn btn-outline-secondary position-relative me-2">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="badge rounded-pill" style="background-color:var(--theme-color);">
+                        {{ \App\Models\CartItem::where('client_id', Auth::guard('client')->id())->count() }}
+                    </span>
+                </a>
                 <div class="dropdown d-inline-block">
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                         <i class="fa fa-user me-1"></i>
